@@ -8,3 +8,6 @@
 - **1. Optimization and Knapsack Problem**
   - KEYWORD: Computational models | Intro to optimization | 0/1 Knapsack Problem | Grredy solutions
   - *CODE: GreedyAlgorithm.py*
+- **2. Decision Trees and Dynamic Programming**
+  - KEYWORD: Decision tree solution to knapsack | Dynamic programming and knapsack | Divide and conquer
+  - *CODE: DecisionTree.py | generators_BitwiseOperators.py*
