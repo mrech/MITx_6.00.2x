@@ -31,9 +31,6 @@ def load_cows(filename):
         cow_dict[line_data[0]] = int(line_data[1])
     return cow_dict
 
-
-cow_dict = load_cows('ps1_cow_data.txt')
-
 # Problem 1
 
 
@@ -81,27 +78,10 @@ def greedy_cow_transport(cows, limit=10):
         for i in range(len(SingleTrip)):
             NewList.append(SingleTrip[i][0])
             cowsCopy.remove(SingleTrip[i])
-        
+
         TotalTrips.append(NewList)
 
     return TotalTrips
-
-
-# Test
-greedy_cow_transport(cow_dict, limit=10)
-
-'''
-        else:
-            TotalTrips.append(SingleTrip)
-            SingleTrip = []
-            totalWeight = 0
-            if (totalWeight+cowsCopy[i][1]) <= limit:
-                SingleTrip.append(cowsCopy[i][0])
-                totalWeight += cowsCopy[i][1]
-
-    TotalTrips.append(SingleTrip)
-'''
-
 
 # Problem 2
 
@@ -126,11 +106,31 @@ def brute_force_cow_transport(cows, limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+
+    MinTrip = len(cows)
+    solution = []
+
+    # Enumerate all possible way
+    cowsPartitions = get_partitions(cows)
+
+    for toConsider in cowsPartitions:
+        TripWeight = []
+        # check weight limitation
+        for elem in range(len(toConsider)):
+            TripWeight.append(sum([cows[x] for x in toConsider[elem]]))
+        if all(i <= limit for i in TripWeight):
+            # calculate number of trips
+            NumTrips = len(toConsider)
+            if (NumTrips <= MinTrip):
+                MinTrip = NumTrips
+                solution = toConsider[:]
+
+    return solution
 
 
 # Problem 3
+
+
 def compare_cow_transport_algorithms():
     """
     Using the data from ps1_cow_data.txt and the specified weight limit, run your
