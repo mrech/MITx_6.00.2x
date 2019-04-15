@@ -144,8 +144,23 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
+
+    limit = 10
+
+    # Timing
+    start = time.time()
+    TotalTrips = greedy_cow_transport(cows, limit)
+    end = time.time()
+    print('Greedy Number Trips', len(TotalTrips))
+    print('Greedy Time', end - start)
+
+    start = time.time()
+    solution = brute_force_cow_transport(cows, limit)
+    end = time.time()
+    print('Brute Number Trips', len(solution))
+    print('Brute Time', end - start)
+
+
 
 
 """
