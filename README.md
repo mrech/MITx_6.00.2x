@@ -11,5 +11,11 @@
 - **2. Decision Trees and Dynamic Programming**
   - KEYWORD: Decision tree solution to knapsack | Dynamic programming and knapsack | Divide and conquer
   - *CODE: DecisionTree.py - generators_BitwiseOperators.py - Fib_RecursiveDynamic.py - DynamicProgramming.py*
+- **3. Graph Problems**
+  - KEYWORD: Graphs | Graph Class Representation | Shortest Path (DFS - BFS)
+  - *CODE: GraphClass.py - Depth_BreadthFirstSearch.py - Ex2_StudentPermutation.py - WeightedGraph.py*
 - ***Problem Set 1: cow transportation***
   - *CODE: ps1.py - ps1_partition.py*
+- **5. Stochastic Thinking**
+  - KEYWORD: Random Process | Probability
+  - *CODE: RandomProcess.py - Probability.py*
