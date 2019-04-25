@@ -19,3 +19,6 @@
 - **5. Stochastic Thinking**
   - KEYWORD: Random Process | Probability
   - *CODE: RandomProcess.py - Probability.py*
+- **6. Random Walks**
+  - KEYWORD: Random Walks | Walks Abstractions | Walks Simulation | Walks Plotting
+  - *CODE: WalksAbstSimuPlot.py*
