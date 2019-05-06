@@ -22,3 +22,5 @@
 - **6. Random Walks**
   - KEYWORD: Random Walks | Walks Abstractions | Walks Simulation | Walks Plotting
   - *CODE: WalksAbstSimuPlot.py*
+- ***Problem Set 2: simulating robots***
+  - *CODE: ps2.py*
