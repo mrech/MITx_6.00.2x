@@ -24,3 +24,9 @@
   - *CODE: WalksAbstSimuPlot.py*
 - ***Problem Set 2: simulating robots***
   - *CODE: ps2.py*
+- **7. Inferential Statistics**
+  - KEYWORD: Law of large numbers | Regression to the mean | Variation | Confidence Intervals | Distributions
+  - *CODE: Exercise.py - lecture7-segment1.py - lecture7-segment2.py - lecture7-segment3.py*
+- **8. Monte Carlo Simulations**
+  - KEYWORD: Central Limit Theorem (CLT)
+  - *CODE: lecture8-segment1.py - flipcoin.py*
