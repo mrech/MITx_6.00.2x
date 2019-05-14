@@ -28,5 +28,5 @@
   - KEYWORD: Law of large numbers | Regression to the mean | Variation | Confidence Intervals | Distributions
   - *CODE: Exercise.py - lecture7-segment1.py - lecture7-segment2.py - lecture7-segment3.py*
 - **8. Monte Carlo Simulations**
-  - KEYWORD: Central Limit Theorem (CLT)
-  - *CODE: lecture8-segment1.py - flipcoin.py*
+  - KEYWORD: Central Limit Theorem (CLT) | Simulating Buffon-Laplace Method
+  - *CODE: lecture8-segment1.py - flipcoin.py - lecture8-segment3.py - Exercise_4.py*
