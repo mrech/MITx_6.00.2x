@@ -3,7 +3,7 @@
 import random
 import pylab
 
-''' 
+'''
 Begin helper code
 '''
 
@@ -35,8 +35,8 @@ class SimpleVirus(object):
     def __init__(self, maxBirthProb, clearProb):
         """
         Initialize a SimpleVirus instance, saves all parameters as attributes
-        of the instance.        
-        maxBirthProb: Maximum reproduction probability (a float between 0-1)        
+        of the instance.
+        maxBirthProb: Maximum reproduction probability (a float between 0-1)
         clearProb: Maximum clearance probability (a float between 0-1).
         """
 
@@ -57,7 +57,7 @@ class SimpleVirus(object):
 
     def doesClear(self):
         """ Stochastically determines whether this virus particle is cleared from the
-        patient's body at a time step. 
+        patient's body at a time step.
         returns: True with probability self.getClearProb and otherwise returns
         False.
         """
@@ -74,15 +74,15 @@ class SimpleVirus(object):
 
         If this virus particle reproduces, then reproduce() creates and returns
         the instance of the offspring SimpleVirus (which has the same
-        maxBirthProb and clearProb values as its parent).         
+        maxBirthProb and clearProb values as its parent).
 
         popDensity: the population density (a float), defined as the current
-        virus population divided by the maximum population.         
+        virus population divided by the maximum population.
 
         returns: a new instance of the SimpleVirus class representing the
         offspring of this virus particle. The child should have the same
         maxBirthProb and clearProb values as this virus. Raises a
-        NoChildException if this virus particle does not reproduce.               
+        NoChildException if this virus particle does not reproduce.
         """
 
         self.popDensity = popDensity
@@ -151,7 +151,7 @@ class Patient(object):
 
     def getTotalPop(self):
         """
-        Gets the size of the current total virus population. 
+        Gets the size of the current total virus population.
         returns: The total virus population (an integer)
         """
 
@@ -163,14 +163,14 @@ class Patient(object):
         time step. update() should execute the following steps in this order:
 
         - Determine whether each virus particle survives and updates the list
-        of virus particles accordingly.   
+        of virus particles accordingly.
 
         - The current population density is calculated. This population density
-          value is used until the next call to update() 
+          value is used until the next call to update()
 
-        - Based on this value of population density, determine whether each 
-          virus particle should reproduce and add offspring virus particles to 
-          the list of viruses in this patient.                    
+        - Based on this value of population density, determine whether each
+          virus particle should reproduce and add offspring virus particles to
+          the list of viruses in this patient.
 
         returns: The total virus population at the end of the update (an
         integer)
@@ -248,14 +248,14 @@ def simulationWithoutDrug(numViruses, maxPop, maxBirthProb, clearProb,
                           numTrials):
     """
     Run the simulation and plot the graph for problem 3 (no drugs are used,
-    viruses do not have any drug resistance).    
+    viruses do not have any drug resistance).
     For each of numTrials trial, instantiates a patient, runs a simulation
     for 300 timesteps, and plots the average virus population size as a
     function of time.
 
     numViruses: number of SimpleVirus to create for patient (an integer)
     maxPop: maximum virus population for patient (an integer)
-    maxBirthProb: Maximum reproduction probability (a float between 0-1)        
+    maxBirthProb: Maximum reproduction probability (a float between 0-1)
     clearProb: Maximum clearance probability (a float between 0-1)
     numTrials: number of simulation runs to execute (an integer)
     """
@@ -286,6 +286,7 @@ def simulationWithoutDrug(numViruses, maxPop, maxBirthProb, clearProb,
     pylab.legend(loc="best")
     pylab.show()
 
+
 '''
 # TESTING
 # Normal scenario
@@ -311,7 +312,7 @@ class ResistantVirus(SimpleVirus):
         Initialize a ResistantVirus instance, saves all parameters as attributes
         of the instance.
 
-        maxBirthProb: Maximum reproduction probability (a float between 0-1)       
+        maxBirthProb: Maximum reproduction probability (a float between 0-1)
 
         clearProb: Maximum clearance probability (a float between 0-1).
 
@@ -323,34 +324,39 @@ class ResistantVirus(SimpleVirus):
         mutProb: Mutation probability for this virus particle (a float). This is
         the probability of the offspring acquiring or losing resistance to a drug.
         """
+        # Inheritated attributes
+        SimpleVirus.__init__(self, maxBirthProb, clearProb)
 
-        # TODO
+        # New Attributes
+        self.resistances = resistances
+        self.mutProb = mutProb
 
     def getResistances(self):
         """
         Returns the resistances for this virus.
         """
-        # TODO
+        return self.resistances
 
     def getMutProb(self):
         """
         Returns the mutation probability for this virus.
         """
-        # TODO
+        return self.mutProb
 
     def isResistantTo(self, drug):
         """
         Get the state of this virus particle's resistance to a drug. This method
         is called by getResistPop() in TreatedPatient to determine how many virus
-        particles have resistance to a drug.       
+        particles have resistance to a drug.
 
         drug: The drug (a string)
 
         returns: True if this virus instance is resistant to the drug, False
         otherwise.
         """
-
-        # TODO
+        # Adjust for drugs not in resistances
+        # usign get method default value
+        return self.resistances.get(drug, '')
 
     def reproduce(self, popDensity, activeDrugs):
         """
@@ -363,9 +369,9 @@ class ResistantVirus(SimpleVirus):
         then it will NOT reproduce.
 
         Hence, if the virus is resistant to all drugs
-        in activeDrugs, then the virus reproduces with probability:      
+        in activeDrugs, then the virus reproduces with probability:
 
-        self.maxBirthProb * (1 - popDensity).                       
+        self.maxBirthProb * (1 - popDensity).
 
         If this virus particle reproduces, then reproduce() creates and returns
         the instance of the offspring ResistantVirus (which has the same
@@ -375,7 +381,7 @@ class ResistantVirus(SimpleVirus):
         For each drug resistance trait of the virus (i.e. each key of
         self.resistances), the offspring has probability 1-mutProb of
         inheriting that resistance trait from the parent, and probability
-        mutProb of switching that resistance trait in the offspring.       
+        mutProb of switching that resistance trait in the offspring.
 
         For example, if a virus particle is resistant to guttagonol but not
         srinol, and self.mutProb is 0.1, then there is a 10% chance that
@@ -386,7 +392,7 @@ class ResistantVirus(SimpleVirus):
         srinol.
 
         popDensity: the population density (a float), defined as the current
-        virus population divided by the maximum population       
+        virus population divided by the maximum population
 
         activeDrugs: a list of the drug names acting on this virus particle
         (a list of strings).
@@ -397,8 +403,56 @@ class ResistantVirus(SimpleVirus):
         NoChildException if this virus particle does not reproduce.
         """
 
-        # TODO
+        # attributes
+        self.popDensity = popDensity
+        self.activeDrugs = activeDrugs
 
+        # Status of current active drugs
+        status_activeDrugs = {k: self.resistances[k] for k in self.activeDrugs}
+
+        # virus resistant to all the drugs
+        if all(value == True for value in status_activeDrugs.values()):
+            # it reproduces
+            # random.seed(0)
+            # Raising Exceptions
+            if random.random() > self.maxBirthProb * (1 - self.popDensity):
+                raise NoChildException
+            else:
+                # Create a new instance of ResistantVirus
+                # Update offspring's resistance trait
+                new_resistances = self.resistances.copy()
+                for i in self.resistances:
+                    # switch resistance's trait
+                    if random.random() <= self.mutProb:
+                        new_resistances[i] = not new_resistances[i]
+
+                return ResistantVirus(self.maxBirthProb, self.clearProb,
+                                      new_resistances, self.mutProb)
+        else:
+            raise NoChildException
+
+'''
+# TESTING RESISTANTVIRUS
+random.seed(0)
+maxBirthProb = random.random()
+random.seed(0)
+clearProb = random.random()
+resistances = {'guttagonol': False, 'srinol': False}
+random.seed(0)
+mutProb = random.random()
+virus_resistant = ResistantVirus(maxBirthProb, clearProb, resistances, mutProb)
+virus_resistant.maxBirthProb
+virus_resistant.clearProb
+virus_resistant.mutProb
+virus_resistant.getResistances()
+virus_resistant.getMutProb()
+virus_resistant.isResistantTo('srinol')
+# Test for virus resistances
+virus = ResistantVirus(0.0, 1.0, {"drug1": True, "drug2": False}, 0.0)
+# Running virus.reproduce(0, []) to make sure that resistances are not changed.
+virus.reproduce(0, [])
+virus.isResistantTo('drug3')
+'''
 
 class TreatedPatient(Patient):
     """
@@ -410,7 +464,7 @@ class TreatedPatient(Patient):
         """
         Initialization function, saves the viruses and maxPop parameters as
         attributes. Also initializes the list of drugs being administered
-        (which should initially include no drugs).              
+        (which should initially include no drugs).
 
         viruses: The list representing the virus population (a list of
         virus instances)
@@ -446,7 +500,7 @@ class TreatedPatient(Patient):
     def getResistPop(self, drugResist):
         """
         Get the population of virus particles resistant to the drugs listed in
-        drugResist.       
+        drugResist.
 
         drugResist: Which drug resistances to include in the population (a list
         of strings - e.g. ['guttagonol'] or ['guttagonol', 'srinol'])
@@ -468,8 +522,8 @@ class TreatedPatient(Patient):
         - The current population density is calculated. This population density
           value is used until the next call to update().
 
-        - Based on this value of population density, determine whether each 
-          virus particle should reproduce and add offspring virus particles to 
+        - Based on this value of population density, determine whether each
+          virus particle should reproduce and add offspring virus particles to
           the list of viruses in this patient.
           The list of drugs being administered should be accounted for in the
           determination of whether each virus particle reproduces.
@@ -497,12 +551,12 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
 
     numViruses: number of ResistantVirus to create for patient (an integer)
     maxPop: maximum virus population for patient (an integer)
-    maxBirthProb: Maximum reproduction probability (a float between 0-1)        
+    maxBirthProb: Maximum reproduction probability (a float between 0-1)
     clearProb: maximum clearance probability (a float between 0-1)
     resistances: a dictionary of drugs that each ResistantVirus is resistant to
                  (e.g., {'guttagonol': False})
     mutProb: mutation probability for each ResistantVirus particle
-             (a float between 0-1). 
+             (a float between 0-1).
     numTrials: number of simulation runs to execute (an integer)
 
     """
