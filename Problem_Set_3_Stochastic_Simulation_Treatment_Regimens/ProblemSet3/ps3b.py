@@ -89,7 +89,7 @@ class SimpleVirus(object):
 
         # random.seed(0)
         # Raising Exceptions
-        
+
         if random.random() > self.maxBirthProb * (1 - self.popDensity):
             raise NoChildException
         else:
@@ -225,7 +225,7 @@ Jhon.getTotalPop()
 Jhon.viruses[0].doesClear()
 Jhon.update()
 Jhon.viruses
-'''
+
 # Create a Patient with virus that is never cleared and always reproduces
 virus = SimpleVirus(1.0, 0.0)
 patient = Patient([virus], 100)
@@ -234,11 +234,10 @@ for _ in range(100):
     print('Update #:', _)
     patient.update()
 
-
 patient.getMaxPop()
 patient.getTotalPop()
 patient.getViruses()
-
+'''
 
 #
 # PROBLEM 2
@@ -260,13 +259,48 @@ def simulationWithoutDrug(numViruses, maxPop, maxBirthProb, clearProb,
     clearProb: Maximum clearance probability (a float between 0-1)
     numTrials: number of simulation runs to execute (an integer)
     """
+    viruses = []
 
-    # TODO
+    # Create number of SimpleVirus for patient
+    for _ in range(numViruses):
+        viruses.append(SimpleVirus(maxBirthProb, clearProb))
 
+    # Instantiate a Patient
+    patient = Patient(viruses, maxPop)
+
+    population = [0] * 300
+
+    # Updating the patient for numTrials..
+    for _ in range(numTrials):
+        # Simulates changes to the virus pop for 300 time steps
+        for i in range(300):
+            population[i] += patient.update()
+
+    # Calculate average population (divide every elements by number of trials)
+    AvgPop = [elem/numTrials for elem in population]  # y-axis
+
+    pylab.plot(AvgPop, label="SimpleVirus")
+    pylab.title("SimpleVirus simulation")
+    pylab.xlabel("Time Steps")
+    pylab.ylabel("Average Virus Population")
+    pylab.legend(loc="best")
+    pylab.show()
+
+'''
+# TESTING
+# Normal scenario
+simulationWithoutDrug(100, 1000, 0.1, 0.05, 100)
+# Rapidly increase scenario
+simulationWithoutDrug(100, 1000, 0.99, 0.05, 100)
+# Rapidly decreasing scenario
+simulationWithoutDrug(100, 1000, 0.01, 0.99, 100)
+'''
 
 #
 # PROBLEM 3
 #
+
+
 class ResistantVirus(SimpleVirus):
     """
     Representation of a virus which can have drug resistance.
