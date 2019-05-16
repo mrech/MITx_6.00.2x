@@ -33,3 +33,5 @@
 - **9. Sampling and Standard Error**
   - KEYWORD: Random Sampling | Stratified Sampling | Error Bars | Sample Size | Standard Deviation | Standard Error of the Mean | Sample SD vs. Population SD | Independent random samples.
   - *CODE: lecture9-segment1.py - lecture9-segment2.py - lecture9-segment3.py - lecture9-segment4.py -*
+- ***Problem Set 3: stochastic simulation of patient and virus population dynamics***
+  - *CODE: ps3b.py*
