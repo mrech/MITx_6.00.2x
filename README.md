@@ -38,4 +38,5 @@
 - **10. Experimental Data**
   - Part 1: Fitting a Model to Data | Goodness of Fit 
   - Part 2: Model Predictions and Overfitting | Cross-Validation
- 
+- ***Problem Set 4: Regression Analysis***
+  - *CODE: ps4b.py*   
