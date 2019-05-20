@@ -40,3 +40,7 @@
   - Part 2: Model Predictions and Overfitting | Cross-Validation
 - ***Problem Set 4: Regression Analysis***
   - *CODE: ps4b.py*   
+- **11. Machine Learning**
+  - KEYWORD: Supervised Learning | Unsupervised Learning | Choosing Features | Distance Matrix | KNN | Scaling | Clustering | Optimization Problem | K-means
+- **12. Statistical Fallacies**
+  - KEYWORD: Lying with Pictures | Garbage In, Garbage Out | Non-representative Sampling | Context | Baseline | The Texas Sharpshooter | Correlation vs. Causation
